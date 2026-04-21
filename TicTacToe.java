@@ -1,34 +1,20 @@
-import java.util.Random;
-
 public class TicTacToe {
 
-    static char player1Symbol;
-    static char player2Symbol;
-    static char currentPlayer;
+    // UC4: Convert slot (1–9) to row and column
+    public static int[] convertToIndex(int slot) {
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
 
-    public static void decideFirstPlayer() {
-        Random rand = new Random();
-        int toss = rand.nextInt(2); // 0 or 1
-
-        if (toss == 0) {
-            player1Symbol = 'X';
-            player2Symbol = 'O';
-            currentPlayer = player1Symbol;
-
-            System.out.println("Player 1 starts!");
-        } else {
-            player1Symbol = 'O';
-            player2Symbol = 'X';
-            currentPlayer = player2Symbol;
-
-            System.out.println("Player 2 starts!");
-        }
-
-        System.out.println("Player 1 Symbol: " + player1Symbol);
-        System.out.println("Player 2 Symbol: " + player2Symbol);
+        return new int[]{row, col};
     }
 
     public static void main(String[] args) {
-        decideFirstPlayer();
+        int slot = 5; // example input
+
+        int[] position = convertToIndex(slot);
+
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + position[0]);
+        System.out.println("Column: " + position[1]);
     }
 }
